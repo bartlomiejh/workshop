@@ -1,4 +1,8 @@
 class ProductsController < ApplicationController
+  # @q: some of category actions where open, what with product index and show?
+  before_action :authenticate_user!
+  # @q: not owner can delete?
+  before_action :ensure_owner!, only: [:edit, :update]
   expose(:category)
   expose(:products)
   expose(:product)
@@ -46,5 +50,9 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:title, :description, :price, :category_id)
+  end
+
+  def ensure_owner!
+    redirect_to(category_product_url(category, product), flash: { error: 'You are not allowed to edit this product.' }) unless product.user.eql? current_user
   end
 end
