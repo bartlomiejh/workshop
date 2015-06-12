@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.1.8'
 
+# @q: what with gem versions
 gem 'pg'
 gem 'draper'
 gem 'decent_exposure'
