@@ -9,7 +9,7 @@ deploy:
     - 'rake db:migrate'
   app: <%= ENV['HEROKU_APP_NAME'] %>
   on:
-    repo: netguru-training/workshops
+    repo: bartlomiejh/workshops
 before_script:
   - cp config/database.yml.travis config/database.yml
   - psql -c 'create database travis_ci_test;' -U postgres
