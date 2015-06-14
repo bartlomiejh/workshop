@@ -1,6 +1,8 @@
 FactoryGirl.define do
+  sequence(:title) { |n| "title#{n}" }
+
   factory :product do
-    title "MyString"
+    title
     description "MyText"
     price 1.5
     user
