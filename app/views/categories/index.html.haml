@@ -3,18 +3,24 @@
 %table.table
   %tr
     %th Name
-    %th
+    %th Show
     - if admin? current_user
-      %th
-      %th
+      %th Edit
+      %th Destroy
 
   - categories.each do |category|
     %tr
       %td= category.name
-      %td= link_to 'Show', category
+      %td
+        = link_to category, {class: 'btn'} do
+          %span.glyphicon.glyphicon-eye-open
       - if admin? current_user
-        %td= link_to 'Edit', edit_category_path(category)
-        %td= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }
+        %td
+          = link_to edit_category_path(category), {class: 'btn'} do
+            %span.glyphicon.glyphicon-pencil
+        %td
+          = link_to category, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn'  do
+            %span.glyphicon.glyphicon-trash
 %br
 
 - if admin? current_user
