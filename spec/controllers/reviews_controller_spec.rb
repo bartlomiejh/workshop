@@ -12,7 +12,10 @@ describe ReviewsController do
     end
 
     context 'when user is signed in' do
-      before { controller.stub(:current_user).and_return(user) }
+      before do
+        controller.stub(:current_user).and_return(user)
+        controller.stub(:authenticate_user!).and_return(user)
+      end
 
       subject { -> { post :create, valid_params } }
       it { is_expected.to change(Review, :count).by(1) }
