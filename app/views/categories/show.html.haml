@@ -8,7 +8,7 @@
   - category.products.each do |product|
     = product.title
 
-- if current_user.try(:admin?)
+- if admin? current_user
   %p
     %h3 New product
     = render 'products/form'
