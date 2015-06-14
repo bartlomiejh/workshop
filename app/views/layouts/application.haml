@@ -9,10 +9,10 @@
     = javascript_include_tag 'application'
 
   %body
-    %nav.navbar.navbar-default
+    %nav.navbar.navbar-default.navbar-inverse
       .container-fluid
         .navbar-header
-          %span.navbar-brand #{AppConfig.workshops_name}
+          = link_to AppConfig.workshops_name, root_path, {class: 'navbar-brand'}
         %p.navbar-text.navbar-right
           - if user_signed_in?
             = current_user.email
