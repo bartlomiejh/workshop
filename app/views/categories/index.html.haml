@@ -1,25 +1,25 @@
 %h1 Listing categories
 
-%table.table
+%table.table.table-responsive.table-striped
   %tr
     %th Name
-    %th Show
+    %th.col-xs-1 Show
     - if admin? current_user
-      %th Edit
-      %th Destroy
+      %th.col-xs-1 Edit
+      %th.col-xs-1 Destroy
 
   - categories.each do |category|
     %tr
       %td= category.name
       %td
-        = link_to category, {class: 'btn'} do
+        = link_to category, {class: 'btn btn-link'} do
           %span.glyphicon.glyphicon-eye-open
       - if admin? current_user
         %td
-          = link_to edit_category_path(category), {class: 'btn'} do
+          = link_to edit_category_path(category), {class: 'btn btn-link'} do
             %span.glyphicon.glyphicon-pencil
         %td
-          = link_to category, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn'  do
+          = link_to category, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-link'  do
             %span.glyphicon.glyphicon-trash
 %br
 
