@@ -1,10 +1,11 @@
-%p#notice= notice
+%h1 Category Details
 
 %p
   %b Name:
-  = category.name
+  %br= category.name
 
 %p
+  %b Products:
   - category.products.each do |product|
     = product.title
 
