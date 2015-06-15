@@ -1,2 +1,9 @@
-@import 'bootstrap_overrides';
-@import "bootstrap";
+@import 'bootswatch/cosmo/variables';
+@import 'bootstrap';
+
+// Bootstrap body padding for fixed navbar
+body {
+  padding-top: 60px;
+}
+
+@import 'bootswatch/cosmo/bootswatch';
