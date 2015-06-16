@@ -23,9 +23,14 @@ describe ProductsController do
 
     describe 'PUT update' do
       describe 'with valid params' do
+        #@q: can we just create object from FactoryGirl here?
+        let(:product) do
+          product = Product.create valid_attributes
+          product.update!(user: create(:user))
+          product
+        end
+
         it 'redirects user to login page' do
-          #@q: can we just create object from FactoryGirl here?
-          product = Product.create! valid_attributes
           put :update, { id: product.to_param, product: { title: 'MyString' }, category_id: category.to_param }
           expect(response).to redirect_to(new_user_session_path)
         end
