@@ -116,16 +116,14 @@ describe ProductsController do
     describe 'with valid params' do
       context 'user is signed in' do
         let(:user) { create(:user) }
-        let(:product) do
-          (Product.create! valid_attributes) #.update!(user: user)
-        end
+        let(:product) { create(:product) }
 
         before do
           sign_in user
           controller.stub(:user_signed_in?).and_return(true)
           controller.stub(:current_user).and_return(user)
           controller.stub(:authenticate_user!).and_return(user)
-          #product.user = user
+          product.user = user
         end
 
         it 'creates a new Product' do
