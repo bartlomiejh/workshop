@@ -20,6 +20,7 @@ describe Product do
     it { should validate_presence_of :title }
     it { should validate_presence_of :description }
     it { should validate_presence_of :price }
+    it { should validate_presence_of :user }
 
     describe '#price' do
       let(:product) { build(:product, price: 1.234) }

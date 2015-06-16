@@ -3,7 +3,7 @@ class Product < ActiveRecord::Base
   belongs_to :user
   has_many :reviews
 
-  validates :title, :description, :price, presence: true
+  validates :title, :description, :price, :user, presence: true
   validates :price, format: {with: /\A\d+(\.\d{0,2})?\z/}
 
   def average_rating
