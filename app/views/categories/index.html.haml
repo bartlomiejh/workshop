@@ -1,25 +1,26 @@
 %h1 Listing categories
 
-%table.table.table-responsive.table-striped
-  %tr
-    %th Name
-    %th.col-xs-2.text-center Products count
-    %th.col-xs-1.text-center
-    - if admin? current_user
-      %th.col-xs-1
-      %th.col-xs-1
-
-  - categories.each do |category|
+%div.table-responsive
+  %table.table.table-striped
     %tr
-      %td= category.name
-      %td.text-center= category.products.size
-      %td.text-center
-        = link_to 'Show', category, {class: 'btn btn-link btn-xs'}
-        - if admin? current_user
-          %td.text-center
-            = link_to 'Edit', edit_category_path(category), {class: 'btn btn-link btn-xs'}
-          %td.text-center
-            = link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-link btn-xs'
+      %th Name
+      %th.col-xs-2.text-center Products count
+      %th.col-xs-1.text-center
+      - if admin? current_user
+        %th.col-xs-1
+        %th.col-xs-1
+
+    - categories.each do |category|
+      %tr
+        %td= category.name
+        %td.text-center= category.products.size
+        %td.text-center
+          = link_to 'Show', category, {class: 'btn btn-link btn-xs'}
+          - if admin? current_user
+            %td.text-center
+              = link_to 'Edit', edit_category_path(category), {class: 'btn btn-link btn-xs'}
+            %td.text-center
+              = link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-link btn-xs'
 %br
 
 - if admin? current_user
