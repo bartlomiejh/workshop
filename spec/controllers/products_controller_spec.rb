@@ -1,13 +1,13 @@
 require 'spec_helper'
 
 describe ProductsController do
-  let(:category)      { create(:category) }
+  let(:category) { create(:category) }
   let(:valid_attributes) do
     {
-      title: 'MyString',
-      description: 'Some description',
-      price: 2.5,
-      category_id: category.id,
+        title: 'MyString',
+        description: 'Some description',
+        price: 2.5,
+        category_id: category.id,
     }
   end
 
@@ -24,6 +24,7 @@ describe ProductsController do
     describe 'PUT update' do
       describe 'with valid params' do
         it 'redirects user to login page' do
+          #@q: can we just create object from FactoryGirl here?
           product = Product.create! valid_attributes
           put :update, { id: product.to_param, product: { title: 'MyString' }, category_id: category.to_param }
           expect(response).to redirect_to(new_user_session_path)
@@ -115,14 +116,16 @@ describe ProductsController do
     describe 'with valid params' do
       context 'user is signed in' do
         let(:user) { create(:user) }
-        let(:product) { Product.create! valid_attributes }
+        let(:product) do
+          (Product.create! valid_attributes) #.update!(user: user)
+        end
 
         before do
           sign_in user
           controller.stub(:user_signed_in?).and_return(true)
           controller.stub(:current_user).and_return(user)
           controller.stub(:authenticate_user!).and_return(user)
-          product.user = user
+          #product.user = user
         end
 
         it 'creates a new Product' do
@@ -163,7 +166,12 @@ describe ProductsController do
   describe 'PUT update' do
     context 'user is signed in' do
       let(:user) { create(:user) }
-      let(:product) { Product.create! valid_attributes }
+      let(:product) do
+        p = Product.create valid_attributes
+        p.update!(user: user)
+        p
+
+      end
 
       before do
         sign_in user
