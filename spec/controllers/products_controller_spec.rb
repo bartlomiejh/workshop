@@ -166,12 +166,7 @@ describe ProductsController do
   describe 'PUT update' do
     context 'user is signed in' do
       let(:user) { create(:user) }
-      let(:product) do
-        p = Product.create valid_attributes
-        p.update!(user: user)
-        p
-
-      end
+      let(:product) { create(:product) }
 
       before do
         sign_in user
