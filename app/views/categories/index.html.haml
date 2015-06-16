@@ -5,10 +5,10 @@
     %tr
       %th Name
       %th.col-xs-2.text-center Products count
-      %th.col-xs-1.text-center
+      %th.action-column
       - if admin? current_user
-        %th.col-xs-1
-        %th.col-xs-1
+        %th.action-column
+        %th.action-column
 
     - categories.each do |category|
       %tr
