@@ -23,12 +23,7 @@ describe ProductsController do
 
     describe 'PUT update' do
       describe 'with valid params' do
-        #@q: can we just create object from FactoryGirl here?
-        let(:product) do
-          product = Product.create valid_attributes
-          product.update!(user: create(:user))
-          product
-        end
+        let(:product) { create(:product) }
 
         it 'redirects user to login page' do
           put :update, { id: product.to_param, product: { title: 'MyString' }, category_id: category.to_param }
