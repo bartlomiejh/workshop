@@ -53,6 +53,6 @@ class ProductsController < ApplicationController
   end
 
   def ensure_owner!
-    redirect_to(category_product_url(category, product), flash: { error: 'You are not allowed to edit this product.' }) unless product.user.eql? current_user
+    redirect_to(category_product_url(category, product), flash: { error: 'You are not allowed to edit this product.' }) unless product.can_edit? current_user
   end
 end
