@@ -82,7 +82,7 @@ describe ProductsController do
 
   describe 'GET index' do
     it 'expose all products' do
-      product = Product.create! valid_attributes
+      product = create :product
       product.category = category
       get :index, category_id: category.id
       expect(controller.products).to eq([product])
@@ -91,7 +91,7 @@ describe ProductsController do
 
   describe 'GET show' do
     it 'expose the requested product' do
-      product = Product.create! valid_attributes
+      product = create :product
       get :show, { id: product.to_param, category_id: category.to_param }
       expect(controller.product).to eq(product)
     end
@@ -106,7 +106,7 @@ describe ProductsController do
 
   describe 'GET edit' do
     it 'expose the requested product' do
-      product = Product.create! valid_attributes
+      product = create :product
       get :edit, { id: product.to_param, category_id: category.to_param }
       expect(controller.product).to eq(product)
     end
