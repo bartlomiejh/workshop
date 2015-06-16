@@ -1,0 +1,26 @@
+%div.table-responsive
+  %table.table.table-striped
+    %tr
+      %th Name
+      %th Description
+      %th.text-center Price
+      %th.text-center Reviews count
+      %th.action-column
+      %th.action-column
+      %th.action-column
+      - category.products.each do |product|
+        %tr
+          %td= product.title
+          %td= product.description
+          %td.text-center= product.price
+          %td.text-center= product.reviews.size
+          %td.text-center
+            = link_to 'Show', category_product_path(category, product), {class: 'btn btn-link btn-xs'}
+          - if admin? current_user
+            %td.text-center
+              = link_to 'Edit', edit_category_product_path(category, product), {class: 'btn btn-link btn-xs'}
+            %td.text-center
+              = link_to 'Destroy', category_product_path(category, product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-link btn-xs'
+
+- if admin? current_user
+  = link_to 'New Product', new_category_product_path(category), {class: 'btn btn-primary'}
