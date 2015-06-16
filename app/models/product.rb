@@ -9,4 +9,8 @@ class Product < ActiveRecord::Base
   def average_rating
     reviews.collect(&:rating).inject(&:+).to_f / reviews.count
   end
+
+  def can_edit? user
+    self.user.eql? user
+  end
 end

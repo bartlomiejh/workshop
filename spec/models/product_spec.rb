@@ -1,6 +1,21 @@
 require 'spec_helper'
 
 describe Product do
+  describe '.can_edit?' do
+    let(:user) { create(:user) }
+    subject { product.can_edit? user }
+
+    context 'when is owner' do
+      let(:product) { create(:product, user: user) }
+      it { is_expected.to be_truthy }
+    end
+
+    context 'when is not owner' do
+      let(:product) { create(:product) }
+      it { is_expected.to be_falsey }
+    end
+  end
+
   describe 'validations' do
     it { should validate_presence_of :title }
     it { should validate_presence_of :description }
@@ -15,7 +30,7 @@ describe Product do
     end
 
     describe '#average_rating' do
-      let(:user)    { create(:user) }
+      let(:user) { create(:user) }
       let(:product) { create(:product) }
       let(:review1) { create(:review, rating: 2, user: user) }
       let(:review2) { create(:review, rating: 3, user: user) }
