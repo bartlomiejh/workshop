@@ -1,0 +1,13 @@
+%div.table-responsive
+  %table.table.table-striped
+    %tr
+      %th Content
+      %th Rating
+      %th Author
+      - reviews.each do |review|
+        %tr
+          %td= review.content
+          %td= review.rating
+          %td= review.author
+
+= link_to 'New Review', new_category_product_review_path(category, product), {class: 'btn btn-primary'}

@@ -1,25 +1,20 @@
-%p#notice= notice
-%p#error= flash[:error]
+%h1 Product Details
 
-%p
-  %b Title:
-  = product.title
-%p
-  %b Description:
-  = product.description
-%p
-  %b Price:
-  = product.price
+%div.well
+  %h3 Title
+  %p= product.title
 
-%p
-  %b Category
-  = product.category.name
+  %h3 Description
+  %p= product.description
 
-%h3 Reviews
-= render 'reviews/form'
+  %h3 Price
+  %p= product.price
 
-= render reviews
-%br
+  %h3 Category
+  %p= product.category.name
+
+  %h3 Reviews
+  = render 'reviews/listing'
 
 = link_to 'Edit', edit_category_product_path(category.id, product.id), class: 'btn btn-primary'
 = link_to 'Back', category_products_path, class: 'btn btn-default'
