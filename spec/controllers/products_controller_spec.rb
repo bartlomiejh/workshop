@@ -4,10 +4,10 @@ describe ProductsController do
   let(:category) { create(:category) }
   let(:valid_attributes) do
     {
-        title: 'MyString',
-        description: 'Some description',
-        price: 2.5,
-        category_id: category.id,
+      title: 'MyString',
+      description: 'Some description',
+      price: 2.5,
+      category_id: category.id,
     }
   end
 
@@ -164,14 +164,13 @@ describe ProductsController do
   describe 'PUT update' do
     context 'user is signed in' do
       let(:user) { create(:user) }
-      let(:product) { create(:product) }
+      let(:product) { create(:product, user: user) }
 
       before do
         sign_in user
         controller.stub(:user_signed_in?).and_return(true)
         controller.stub(:current_user).and_return(user)
         controller.stub(:authenticate_user!).and_return(user)
-        product.user = user
       end
 
       describe 'with valid params' do
@@ -199,11 +198,10 @@ describe ProductsController do
           expect(controller.product).to eq(product)
         end
 
-        #@q: why the heck this test is passing -
         it "re-renders the 'edit' template" do
           Product.any_instance.stub(:update).and_return(false)
           put :update, { id: product.to_param, product: { 'title' => 'invalid value' }, category_id: category.to_param }
-          expect(response).to redirect_to(category_product_url(category, product))
+          expect(response).to render_template('edit')
         end
       end
     end
