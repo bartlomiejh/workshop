@@ -15,6 +15,7 @@
 
   %h3 Reviews
   = render 'reviews/listing'
+  = link_to 'New Review', new_category_product_review_path(category, product), {class: 'btn btn-primary'}
 
 = link_to 'Edit', edit_category_product_path(category.id, product.id), class: 'btn btn-primary'
 = link_to 'Back', category_products_path, class: 'btn btn-default'
