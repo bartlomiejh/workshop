@@ -5,6 +5,7 @@ class CategoriesController < ApplicationController
   expose(:categories)
   expose_decorated(:category)
   expose(:product) { Product.new }
+  expose(:products, ancestor: :category)
 
   def index
   end
