@@ -6,7 +6,7 @@
       %th.text-center Price
       %th.text-center Reviews count
       %th.action-column
-      - if product.can_edit? current_user
+      - if category.can_edit_any_product? current_user
         %th.action-column
       %th.action-column
       - category.products.each do |product|
@@ -17,9 +17,10 @@
           %td.text-center= product.reviews.size
           %td.text-center
             = link_to 'Show', category_product_path(category, product), {class: 'btn btn-link btn-xs'}
-          - if product.can_edit? current_user
+          - if category.can_edit_any_product? current_user
             %td.text-center
-              = link_to 'Edit', edit_category_product_path(category, product), {class: 'btn btn-link btn-xs'}
+              - if product.can_edit? current_user
+                = link_to 'Edit', edit_category_product_path(category, product), {class: 'btn btn-link btn-xs'}
           %td.text-center
             = link_to 'Destroy', category_product_path(category, product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-link btn-xs'
 

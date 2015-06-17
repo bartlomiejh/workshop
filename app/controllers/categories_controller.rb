@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
   before_filter :ensure_admin!, only: [:new, :edit, :update, :destroy, :create]
 
   expose(:categories)
-  expose(:category)
+  expose_decorated(:category)
   expose(:product) { Product.new }
 
   def index
