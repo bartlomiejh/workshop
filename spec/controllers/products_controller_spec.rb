@@ -36,14 +36,13 @@ describe ProductsController do
   context 'another user is signed in' do
     let(:user) { create(:user) }
     let(:user2) { build(:user) }
-    let(:product) { create(:product) }
+    let(:product) { create(:product, user: user) }
 
     before do
       sign_in user2
       controller.stub(:user_signed_in?).and_return(true)
       controller.stub(:current_user).and_return(user2)
       controller.stub(:authenticate_user!).and_return(user2)
-      product.user = user
     end
 
     describe 'GET edit' do
@@ -116,14 +115,13 @@ describe ProductsController do
     describe 'with valid params' do
       context 'user is signed in' do
         let(:user) { create(:user) }
-        let(:product) { create(:product) }
+        let(:product) { create(:product, user: user) }
 
         before do
           sign_in user
           controller.stub(:user_signed_in?).and_return(true)
           controller.stub(:current_user).and_return(user)
           controller.stub(:authenticate_user!).and_return(user)
-          product.user = user
         end
 
         it 'creates a new Product' do
@@ -240,5 +238,4 @@ describe ProductsController do
       end
     end
   end
-
 end
