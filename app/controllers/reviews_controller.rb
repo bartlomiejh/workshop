@@ -4,9 +4,6 @@ class ReviewsController < ApplicationController
   expose(:product)
   expose(:category)
 
-  def edit
-  end
-
   def create
     self.review = Review.new(review_params)
     review.user = current_user
@@ -17,11 +14,6 @@ class ReviewsController < ApplicationController
     else
       render action: 'new'
     end
-  end
-
-  def destroy
-    review.destroy
-    redirect_to category_product_url(product.category, product), notice: 'Review was successfully destroyed.'
   end
 
   private
