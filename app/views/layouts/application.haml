@@ -13,14 +13,8 @@
     .container-fluid
       .row
         .col-xs-12
-          - unless notice.nil?
-            %div.alert.alert-dismissible.alert-success
-              %button.close{type: 'button', data: {dismiss: 'alert'}} x
-              =notice
-          - unless flash[:error].nil?
-            %div.alert.alert-dismissible.alert-danger
-              %button.close{type: 'button', data: {dismiss: 'alert'}} x
-              =flash[:error]
+          = render 'layouts/error'
+          = render 'layouts/notice'
       .row
         .col-lg-12
           = yield
