@@ -1,4 +1,4 @@
 - unless flash[:error].nil?
-  %div.alert.alert-dismissible.alert-danger
+  %div#error.alert.alert-dismissible.alert-danger
     %button.close{type: 'button', data: {dismiss: 'alert'}} x
     =flash[:error]
