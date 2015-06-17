@@ -199,8 +199,9 @@ describe ProductsController do
           expect(controller.product).to eq(product)
         end
 
+        #@q: why the heck this test is passing -
         it "re-renders the 'edit' template" do
-          Product.any_instance.stub(:save).and_return(false)
+          Product.any_instance.stub(:update).and_return(false)
           put :update, { id: product.to_param, product: { 'title' => 'invalid value' }, category_id: category.to_param }
           expect(response).to redirect_to(category_product_url(category, product))
         end
