@@ -1,0 +1,28 @@
+%nav.navbar.navbar-default.navbar-fixed-top
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle.collapsed{data: {target: '#navbar-collapse', toggle:  'collapse'}, type: 'button'}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to AppConfig.workshops_name, root_path, {class: 'navbar-brand'}
+    %div.navbar-collapse.collapse#navbar-collapse
+      %ul.nav.navbar-nav.navbar-right
+        - if user_signed_in?
+          %li.dropdown
+            %a.dropdown-toggle{data:{toggle: 'dropdown'}, href: "#"}
+              %span.glyphicon.glyphicon-user
+              = current_user.email
+              %span.caret
+            %ul.dropdown-menu
+              %li
+                %a{href: "#"} Profile
+              %li.divider
+              %li
+                = link_to 'Sign out', destroy_user_session_path, method: :delete
+        - else
+          %li
+            = link_to 'Sign in', new_user_session_path, method: :get
+          %li
+            = link_to 'Sign up', new_user_registration_path, method: :get
