@@ -1,8 +1,10 @@
 = simple_form_for [category, product, review] do |f|
   = f.error_notification
 
-  = f.input :content, as: :text
-  = f.input :rating, collection: 1..5
+  .form-inputs
+    = f.input :content, as: :text
+    = f.input :rating, collection: 1..5
 
-  = f.button :submit, 'Save'
-  = link_to 'Back', :back, class: 'btn btn-default'
+  .form-actions
+    = f.button :submit, 'Save'
+    = link_to 'Back', :back, class: 'btn btn-default'
