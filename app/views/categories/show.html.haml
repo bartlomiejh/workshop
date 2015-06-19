@@ -6,7 +6,8 @@
 
   %h3 Products:
   = render 'products/listing'
-  = link_to 'New Product', new_category_product_path(category), {class: 'btn btn-primary'}
+  - if user_signed_in?
+    = link_to 'New Product', new_category_product_path(category), {class: 'btn btn-primary'}
 
 - if admin? current_user
   = link_to 'Edit', edit_category_path(category), class: 'btn btn-primary'
