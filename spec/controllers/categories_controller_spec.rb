@@ -28,9 +28,9 @@ describe CategoriesController do
       end
 
       it 'exposes products for the requested category' do
-        create(:product, category: category)
+        product = create(:product, category: category)
         get :show, { id: category.to_param }, valid_session
-        expect(controller.products).to eq(category.products)
+        expect(controller.products).to eq([product])
       end
     end
   end
