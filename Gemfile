@@ -22,6 +22,7 @@ gem 'travis'
 gem 'ffaker'
 gem 'konf'
 gem 'coveralls', require: false
+gem 'flip'
 
 group :development do
   gem 'spring'
