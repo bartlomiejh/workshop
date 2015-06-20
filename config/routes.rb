@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  mount Flip::Engine => "/flip"
   devise_for :users
   resources :categories do
     resources :products, except: :index do
@@ -7,5 +6,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :features, only: [:index] do
+    resources :strategies, only: [:update, :destroy]
+  end
+  mount Flip::Engine => '/features'
   root 'categories#index'
 end
