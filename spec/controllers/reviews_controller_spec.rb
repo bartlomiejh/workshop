@@ -17,18 +17,31 @@ describe ReviewsController do
         controller.stub(:authenticate_user!).and_return(user)
       end
 
-      subject { -> { post :create, valid_params } }
-      it { is_expected.to change(Review, :count).by(1) }
-    end
-
-    context 'when user is not signed in' do
-      before { controller.stub(:current_user).and_return(nil) }
-
-      subject do
-        post :create, valid_params
-        response
+      context 'and params are valid' do
+        subject { -> { post :create, valid_params } }
+        it { is_expected.to change(Review, :count).by(1) }
       end
-      it { is_expected.to redirect_to(new_user_session_path) }
+
+      context 'and params are invalid' do
+        before { allow_any_instance_of(Review).to receive(:save).and_return(false) }
+
+        subject do
+          post :create, valid_params
+          response
+        end
+
+        it { is_expected.to render_template('new') }
+      end
     end
+  end
+
+  context 'when user is not signed in' do
+    before { controller.stub(:current_user).and_return(nil) }
+
+    subject do
+      post :create, valid_params
+      response
+    end
+    it { is_expected.to redirect_to(new_user_session_path) }
   end
 end
