@@ -12,4 +12,12 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :firstname << :lastname
   end
+
+  def ensure_admin!
+    unless current_user.admin?
+      sign_out current_user
+      redirect_to new_user_session_path
+      false
+    end
+  end
 end
