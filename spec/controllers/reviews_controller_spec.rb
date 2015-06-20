@@ -33,15 +33,15 @@ describe ReviewsController do
         it { is_expected.to render_template('new') }
       end
     end
-  end
 
-  context 'when user is not signed in' do
-    before { controller.stub(:current_user).and_return(nil) }
+    context 'when user is not signed in' do
+      before { controller.stub(:current_user).and_return(nil) }
 
-    subject do
-      post :create, valid_params
-      response
+      subject do
+        post :create, valid_params
+        response
+      end
+      it { is_expected.to redirect_to(new_user_session_path) }
     end
-    it { is_expected.to redirect_to(new_user_session_path) }
   end
 end
