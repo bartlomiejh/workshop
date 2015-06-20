@@ -16,9 +16,10 @@
               = current_user.email
               %span.caret
             %ul.dropdown-menu
-              %li
-                %a{href: "#"} Profile
-              %li.divider
+              - if feature? :user_profile
+                %li
+                  %a{href: "#"} Profile
+                %li.divider
               - if admin? current_user
                 %li
                   = link_to 'Features', flip_engine_path

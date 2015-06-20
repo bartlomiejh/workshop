@@ -6,10 +6,5 @@ class Feature < ActiveRecord::Base
   strategy Flip::DeclarationStrategy
   default false
 
-  # Declare your features here, e.g:
-  #
-  # feature :world_domination,
-  #   default: true,
-  #   description: "Take over the world."
-
+  feature :user_profile, default: Rails.env.production? ? false : true, description: 'User profile page'
 end
