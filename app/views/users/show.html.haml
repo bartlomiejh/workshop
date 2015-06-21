@@ -4,6 +4,16 @@
   %h3 Firstname
   %p= current_user.firstname
 
-  -#@todo: Ad14. rest of user fields, maybe place with avatar, password links
+  %h3 Lastname
+  %p= current_user.lastname
 
+  %h3 Email
+  %p= current_user.email
+
+  %h3 Admin
+  -#@todo: helper z icona
+  %p= current_user.admin?
+  -#@todo: Ad14. rest of user fields, maybe place with avatar
+
+= link_to 'Edit', edit_user_registration_path , {class: 'btn btn-primary'}
 = link_to 'Back', :back, class: 'btn btn-default'
