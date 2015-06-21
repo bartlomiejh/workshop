@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:show]
+  get 'profile', to: 'users#show'
 
   resources :features, only: [:index] do
     resources :strategies, only: [:update, :destroy]
