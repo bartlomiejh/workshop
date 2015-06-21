@@ -18,7 +18,7 @@
             %ul.dropdown-menu
               - if feature? :user_profile
                 %li
-                  %a{href: "#"} Profile
+                  = link_to 'Profile', user_path(current_user)
                 %li.divider
               - if admin? current_user
                 %li

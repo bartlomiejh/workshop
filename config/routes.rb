@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users, only: [:show]
+
   resources :features, only: [:index] do
     resources :strategies, only: [:update, :destroy]
   end
