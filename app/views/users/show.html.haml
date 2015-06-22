@@ -15,5 +15,8 @@
   %p= current_user.admin?
   -#@todo: Ad14. rest of user fields, maybe place with avatar
 
+  %h3 Reviews
+  = render 'reviews/listing'
+
 = link_to 'Edit', edit_user_registration_path , {class: 'btn btn-primary'}
 = link_to 'Back', :back, class: 'btn btn-default'
