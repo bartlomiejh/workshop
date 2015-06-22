@@ -2,18 +2,22 @@
 
 %div.well
   %h3 Firstname
-  %p= current_user.firstname
+  %p= user.firstname
 
   %h3 Lastname
-  %p= current_user.lastname
+  %p= user.lastname
 
   %h3 Email
-  %p= current_user.email
+  %p= user.email
+
+  %h3 Member since
+  %p= user.member_since
 
   %h3 Admin
   -#@todo: helper z icona
-  %p= current_user.admin?
+  %p= user.admin?
   -#@todo: Ad14. rest of user fields, maybe place with avatar
+  -#@todo: some iplookup basing on last_sign_in_ip?
 
   %h3 Reviews
   = render 'reviews/listing'
