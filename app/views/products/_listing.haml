@@ -4,6 +4,7 @@
       %th Title
       %th Description
       %th.text-center Price
+      %th.text-center Average rating
       %th.text-center Reviews count
       - if user_signed_in?
         %th.action-column
@@ -16,6 +17,7 @@
           %td= product.title
           %td= product.description
           %td.text-center= product.price
+          %td.text-center= product.average_rating
           %td.text-center= product.reviews.size
           - if user_signed_in?
             %td.text-center
