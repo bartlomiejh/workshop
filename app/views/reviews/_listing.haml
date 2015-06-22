@@ -4,8 +4,10 @@
       %th Content
       %th Rating
       %th Author
+      %th Creation Date
       - reviews.each do |review|
         %tr
           %td= review.content
           %td= review.rating
           %td= review.author
+          %td= review.creation_date
