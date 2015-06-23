@@ -12,20 +12,28 @@
         - if user_signed_in?
           %li.dropdown
             %a.dropdown-toggle{data:{toggle: 'dropdown'}, href: "#"}
-              %span.glyphicon.glyphicon-user
+              %span.glyphicon.glyphicon-cog
               = current_user.email
               %span.caret
             %ul.dropdown-menu
               - if feature? :user_profile
                 %li
-                  = link_to 'Profile', profile_path
+                  = link_to profile_path do
+                    %span.glyphicon.glyphicon-user
+                    Profile
                 %li.divider
               - if admin? current_user
                 %li
-                  = link_to 'Features', flip_engine_path
+                  = link_to flip_engine_path do
+                    %span.glyphicon.glyphicon-star
+                    Features
+
                 %li.divider
               %li
-                = link_to 'Sign out', destroy_user_session_path, method: :delete
+                = link_to destroy_user_session_path, method: :delete do
+                  %span.glyphicon.glyphicon-log-out
+                  Sign out
+
         - else
           %li
             = link_to 'Sign in', new_user_session_path, method: :get, class: 'btn btn-default'
