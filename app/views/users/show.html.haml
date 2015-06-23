@@ -14,8 +14,7 @@
   %p= user.member_since
 
   %h3 Admin
-  -#@todo: helper z icona
-  %p= user.admin?
+  %p= check_box_tag 'name', 'value', user.admin?, disabled: true
   -#@todo: Ad14. rest of user fields, maybe place with avatar
   -#@todo: some iplookup basing on last_sign_in_ip?
 
