@@ -21,7 +21,8 @@ gem 'therubyracer', platforms: :ruby
 gem 'travis'
 gem 'ffaker'
 gem 'konf'
-gem 'coveralls', require: false
+# switch back to previos version due to: Could not find term-ansicolor-1.3.1 in any of the sources
+gem 'coveralls', '0.8.0', require: false
 gem 'flip'
 gem 'rollbar', '~> 1.5.3'
 
