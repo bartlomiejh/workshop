@@ -23,6 +23,7 @@ gem 'ffaker'
 gem 'konf'
 gem 'coveralls', require: false
 gem 'flip'
+gem 'rollbar', '~> 1.5.3'
 
 group :development do
   gem 'spring'
