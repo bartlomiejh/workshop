@@ -4,4 +4,8 @@ class UserDecorator < Draper::Decorator
   def member_since
     created_at.strftime('%B %Y')
   end
+
+  def full_name
+    "#{firstname} #{lastname}"
+  end
 end
