@@ -15,12 +15,15 @@
         %td= category.name
         %td.text-center= category.products.size
         %td.text-center
-          = link_to 'Show', category, {class: 'btn btn-link btn-xs'}
+          = link_to category, {class: 'btn btn-link btn-xs'} do
+            %span.glyphicon.glyphicon-eye-open
           - if admin? current_user
             %td.text-center
-              = link_to 'Edit', edit_category_path(category), {class: 'btn btn-link btn-xs'}
+              = link_to edit_category_path(category), {class: 'btn btn-link btn-xs'} do
+                %span.glyphicon.glyphicon-edit
             %td.text-center
-              = link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-link btn-xs'
+              = link_to category, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-link btn-xs' do
+                %span.glyphicon.glyphicon-trash
 %br
 
 - if admin? current_user

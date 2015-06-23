@@ -21,11 +21,14 @@
           %td.text-center= product.reviews.size
           - if user_signed_in?
             %td.text-center
-              = link_to 'Show', category_product_path(category, product), {class: 'btn btn-link btn-xs'}
+              = link_to category_product_path(category, product), {class: 'btn btn-link btn-xs'} do
+                %span.glyphicon.glyphicon-eye-open
           - if category.can_edit_any_product? current_user
             %td.text-center
               - if product.can_edit? current_user
-                = link_to 'Edit', edit_category_product_path(category, product), {class: 'btn btn-link btn-xs'}
+                = link_to edit_category_product_path(category, product), {class: 'btn btn-link btn-xs'} do
+                  %span.glyphicon.glyphicon-edit
           - if user_signed_in?
             %td.text-center
-              = link_to 'Destroy', category_product_path(category, product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-link btn-xs'
+              = link_to category_product_path(category, product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-link btn-xs' do
+                %span.glyphicon.glyphicon-trash
