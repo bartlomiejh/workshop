@@ -1,25 +1,24 @@
 %h1 User Details
 
 .well
-  %h3 Firstname
-  %p= user.firstname
+  .row
+    .col-xs-12.col-sm-6
+      %h3 Email
+      %p= user.email
 
-  %h3 Lastname
-  %p= user.lastname
+      %h3 Full name
+      %p= user.full_name
 
-  %h3 Email
-  %p= user.email
+    .col-xs-12.col-sm-6
+      %h3 Member since
+      %p= user.member_since
 
-  %h3 Member since
-  %p= user.member_since
+      %h3 Admin
+      %p= check_box_tag 'name', 'value', user.admin?, disabled: true
 
-  %h3 Admin
-  %p= check_box_tag 'name', 'value', user.admin?, disabled: true
-  -#@todo: Ad14. rest of user fields, maybe place with avatar
-  -#@todo: some iplookup basing on last_sign_in_ip?
-
-  %h3 Reviews
-  = render 'reviews/listing'
+    .col-xs-12
+      %h3 Reviews
+      = render 'reviews/listing'
 
 = link_to 'Edit', edit_user_registration_path , {class: 'btn btn-primary'}
 = link_to 'Back', :back, class: 'btn btn-default'
