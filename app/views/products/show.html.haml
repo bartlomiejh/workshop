@@ -1,22 +1,26 @@
 %h1 Product Details
 
 .well
-  %h3 Title
-  %p= product.title
+  .row
+    .col-xs-12.col-sm-6
+      %h3 Title
+      %p= product.title
 
-  %h3 Description
-  %p= product.description
+      %h3 Description
+      %p= product.description
 
-  %h3 Price
-  %p= product.price
+    .col-xs-12.col-sm-6
+      %h3 Price
+      %p= product.price
 
-  %h3 Category
-  %p= product.category.name
+      %h3 Category
+      %p= product.category.name
 
-  %h3 Reviews
-  = render 'reviews/listing'
-  = link_to 'New Review', new_category_product_review_path(category, product), {class: 'btn btn-primary'}
+    .col-xs-12
+      %h3 Reviews
+      = render 'reviews/listing'
+      = link_to 'New Review', new_category_product_review_path(category, product), {class: 'btn btn-primary'}
 
-  - if product.can_edit? current_user
-    = link_to 'Edit', edit_category_product_path(category.id, product.id), class: 'btn btn-primary'
+- if product.can_edit? current_user
+  = link_to 'Edit', edit_category_product_path(category.id, product.id), class: 'btn btn-primary'
 = link_to 'Back', category_path(category), class: 'btn btn-default'
