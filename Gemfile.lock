@@ -1,13 +1,12 @@
 GIT
-  remote: https://github.com/rails/sass-rails.git
-  revision: 8e68c5f24ed6487277e9df531ec57b375ad1bea2
+  remote: git://github.com/rails/sass-rails.git
+  revision: 404cd9ba2bf2618fe14b1ba2f27c861ba48980f2
   specs:
-    sass-rails (5.0.3)
+    sass-rails (5.0.0.beta1)
       railties (>= 4.0.0, < 5.0)
-      sass (~> 3.1)
-      sprockets (>= 2.8, < 4.0)
+      sass (~> 3.2, >= 3.2.2)
+      sprockets (~> 2.8, < 3.0)
       sprockets-rails (>= 2.0, < 4.0)
-      tilt (>= 1.1, < 3)
 
 GEM
   remote: https://rubygems.org/
@@ -179,6 +178,8 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
+    rollbar (1.5.3)
+      multi_json (~> 1.3)
     rspec-core (3.1.7)
       rspec-support (~> 3.1.0)
     rspec-expectations (3.1.2)
@@ -275,6 +276,7 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.1.8)
   rails_12factor
+  rollbar (~> 1.5.3)
   rspec-rails
   sass-rails!
   shoulda-matchers
