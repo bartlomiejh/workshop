@@ -12,14 +12,14 @@ gem 'simple_form', '~> 3.1.0rc'
 gem 'bootstrap-sass', '~> 3.1.0'
 gem 'bootswatch-rails'
 gem 'haml-rails'
-gem 'sass-rails', github: 'rails/sass-rails'
+gem 'sass-rails', git: 'https://github.com/rails/sass-rails.git'
 gem 'coffee-rails'
 gem 'uglifier'
 gem 'quiet_assets'
 gem 'jquery-rails'
 gem 'therubyracer', platforms: :ruby
 gem 'travis'
-gem 'ffaker'
+gem 'ffaker', '~> 1.2.0'
 gem 'konf'
 # switch back to previos version due to: Could not find term-ansicolor-1.3.1 in any of the sources
 gem 'coveralls', '0.8.0', require: false

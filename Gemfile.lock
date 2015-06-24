@@ -1,12 +1,13 @@
 GIT
-  remote: git://github.com/rails/sass-rails.git
-  revision: 404cd9ba2bf2618fe14b1ba2f27c861ba48980f2
+  remote: https://github.com/rails/sass-rails.git
+  revision: 8e68c5f24ed6487277e9df531ec57b375ad1bea2
   specs:
-    sass-rails (5.0.0.beta1)
+    sass-rails (5.0.3)
       railties (>= 4.0.0, < 5.0)
-      sass (~> 3.2, >= 3.2.2)
-      sprockets (~> 2.8, < 3.0)
+      sass (~> 3.1)
+      sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+      tilt (>= 1.1, < 3)
 
 GEM
   remote: https://rubygems.org/
@@ -93,7 +94,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.9.1)
       faraday (>= 0.7.4, < 0.10)
-    ffaker (2.0.0)
+    ffaker (1.2.0)
     ffi (1.9.8)
     flip (1.0.1)
       activesupport (>= 3.0, < 5)
@@ -279,7 +280,7 @@ DEPENDENCIES
   devise
   draper
   factory_girl_rails
-  ffaker
+  ffaker (~> 1.2.0)
   flip
   haml-rails
   jquery-rails
