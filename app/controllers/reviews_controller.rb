@@ -11,13 +11,14 @@ class ReviewsController < ApplicationController
     if review.save
       product.reviews << review
       redirect_to category_product_url(product.category, product), notice: 'Review was successfully created.'
+      meta_events_tracker.event!(:review, :create, { product_id: product.id, review_id: review.id, rating: review.rating })
     else
       render action: 'new'
     end
   end
 
   private
-    def review_params
-      params.require(:review).permit(:content, :rating)
-    end
+  def review_params
+    params.require(:review).permit(:content, :rating)
+  end
 end

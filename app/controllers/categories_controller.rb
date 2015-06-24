@@ -8,6 +8,7 @@ class CategoriesController < ApplicationController
   expose(:products, ancestor: :category)
 
   def index
+    meta_events_tracker.event!(:category, :index)
   end
 
   def show
@@ -24,6 +25,7 @@ class CategoriesController < ApplicationController
 
     if category.save
       redirect_to category, notice: 'Category was successfully created.'
+      meta_events_tracker.event!(:category, :create, { category_id: category.id, name: category.name })
     else
       render action: 'new'
     end

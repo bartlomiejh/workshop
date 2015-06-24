@@ -27,6 +27,7 @@ class ProductsController < ApplicationController
     if product.save
       category.products << product
       redirect_to category_product_url(category, product), notice: 'Product was successfully created.'
+      meta_events_tracker.event!(:product, :create, { product_id: product.id, category_id: category.id, price: product.price })
     else
       render action: 'new'
     end
