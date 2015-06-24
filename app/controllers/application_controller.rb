@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     register_user_in_mixpanel
     meta_events_tracker.event!(:user, :sign_in)
-    root_path
+    super
   end
 
   private
