@@ -80,4 +80,5 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  MetaEvents::Tracker.default_event_receivers << Mixpanel::Tracker.new(ENV['MIXPANEL_ACCESS_TOKEN'])
 end

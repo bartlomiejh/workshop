@@ -25,6 +25,8 @@ gem 'konf'
 gem 'coveralls', '0.8.0', require: false
 gem 'flip'
 gem 'rollbar', '~> 1.5.3'
+gem 'mixpanel-ruby', '~> 2.1.0'
+gem 'meta_events', '1.2.0'
 
 group :development do
   gem 'spring'

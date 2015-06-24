@@ -20,4 +20,24 @@ class ApplicationController < ActionController::Base
       false
     end
   end
+
+  def meta_events_tracker
+    @meta_events_tracker ||= MetaEvents::Tracker.new(current_user.try(:id), request.remote_ip)
+  end
+
+  def after_sign_in_path_for(resource)
+    register_user_in_mixpanel
+    meta_events_tracker.event!(:user, :sign_in)
+    root_path
+  end
+
+  private
+  def register_user_in_mixpanel
+    if meta_events_tracker.event_receivers.first.respond_to? :people
+      meta_events_tracker.event_receivers.first.people.set(current_user.id, {
+        '$first_name' => current_user.firstname,
+        '$last_name' => current_user.lastname
+      })
+    end
+  end
 end
